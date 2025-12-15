@@ -1,60 +1,128 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <title>傳說對決周年慶送禮物</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: "Microsoft JhengHei", sans-serif;
-            color: white;
-        }
+  <meta charset="UTF-8" />
+  <title>傳說對決｜周年慶回饋活動</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
+      background: radial-gradient(circle at top, #1b2b4f, #05070f 70%);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        .box {
-            text-align: center;
-            background: rgba(0,0,0,0.5);
-            padding: 60px;
-            border-radius: 20px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.6);
-        }
+    .card {
+      width: 90%;
+      max-width: 420px;
+      background: linear-gradient(180deg, #162447, #0b132b);
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+      padding: 32px 26px 36px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
 
-        h1 {
-            font-size: 36px;
-            margin-bottom: 40px;
-        }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.15), transparent 70%);
+      animation: shine 3s infinite;
+    }
 
-        button {
-            font-size: 24px;
-            padding: 20px 50px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            background: #ffcc00;
-            color: #000;
-            transition: 0.3s;
-        }
+    @keyframes shine {
+      0% { transform: translateX(-100%); }
+      60% { transform: translateX(100%); }
+      100% { transform: translateX(100%); }
+    }
 
-        button:hover {
-            transform: scale(1.1);
-            background: #ffd633;
-        }
-    </style>
+    .logo {
+      font-size: 22px;
+      letter-spacing: 2px;
+      color: #ffd36a;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin: 10px 0 6px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #c7d2ff;
+      margin-bottom: 26px;
+    }
+
+    .reward-box {
+      background: linear-gradient(145deg, #ffd36a, #ffb703);
+      color: #2b1d00;
+      border-radius: 16px;
+      padding: 18px 14px;
+      margin-bottom: 26px;
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.4);
+    }
+
+    .reward-box strong {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px 0;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #ffcc00, #ff8c00);
+      color: #2b1d00;
+      box-shadow: 0 10px 25px rgba(255,140,0,0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(255,140,0,0.7);
+    }
+
+    .note {
+      margin-top: 18px;
+      font-size: 12px;
+      color: #9aa4ff;
+    }
+  </style>
 </head>
 <body>
-    <div class="box">
-        <h1>🎉 傳說對決周年慶送禮物 🎉</h1>
-        <button onclick="rickRoll()">🎁 點我領取周年慶禮物</button>
+  <div class="card">
+    <div class="logo">ARENA OF VALOR</div>
+    <h1>周年慶限定回饋</h1>
+    <div class="subtitle">感謝挑戰者一路相伴</div>
+
+    <div class="reward-box">
+      <strong>🎁 免費周年禮包</strong>
+      登入即可領取限定獎勵
     </div>
 
-    <script>
-        function rickRoll() {
-            window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-        }
-    </script>
+    <button onclick="claim()">立即領取</button>
+
+    <div class="note">※ 每個帳號限領一次，數量有限</div>
+  </div>
+
+  <script>
+    function claim() {
+      setTimeout(() => {
+        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+      }, 800);
+    }
+  </script>
 </body>
 </html>
