@@ -2,126 +2,222 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8" />
-  <title>傳說對決｜周年慶回饋活動</title>
+  <title>《傳說對決》官方公告｜帳號驗證</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       margin: 0;
       min-height: 100vh;
       font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
-      background: radial-gradient(circle at top, #1b2b4f, #05070f 70%);
-      color: #fff;
+      background: linear-gradient(180deg, #0b1022, #05070f);
+      color: #e6e9ff;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    .card {
-      width: 90%;
-      max-width: 420px;
-      background: linear-gradient(180deg, #162447, #0b132b);
-      border-radius: 20px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
-      padding: 32px 26px 36px;
-      text-align: center;
+    /* 手機 App 容器 */
+    .phone {
+      width: 100%;
+      max-width: 390px;
+      height: 100vh;
+      background: #0e1430;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 40px rgba(0,0,0,.8);
       position: relative;
       overflow: hidden;
     }
 
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.15), transparent 70%);
-      animation: shine 3s infinite;
+    /* App 標題列 */
+    .app-header {
+      height: 56px;
+      background: linear-gradient(180deg, #1b2a5b, #111a3a);
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.6);
     }
 
-    @keyframes shine {
-      0% { transform: translateX(-100%); }
-      60% { transform: translateX(100%); }
-      100% { transform: translateX(100%); }
-    }
-
-    .logo {
+    .back {
       font-size: 22px;
-      letter-spacing: 2px;
+      margin-right: 10px;
+      opacity: .9;
+      cursor: pointer;
+      transition: transform .2s, opacity .2s;
+    }
+
+    .back:active { transform: translateX(-4px); opacity: .6; }
+
+    .title {
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    /* 公告內容 */
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 18px 16px 26px;
+      line-height: 1.7;
+      transition: transform .25s ease;
+    }
+
+    .slide-left { transform: translateX(-30px); opacity: .6; }
+
+    .tag {
+      display: inline-block;
+      background: rgba(255,211,106,.15);
       color: #ffd36a;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
       margin-bottom: 10px;
     }
 
     h1 {
-      font-size: 26px;
-      margin: 10px 0 6px;
+      font-size: 22px;
+      margin: 6px 0 4px;
+      color: #ffd36a;
     }
 
-    .subtitle {
+    .date {
+      font-size: 12px;
+      color: #8b92c9;
+      margin-bottom: 18px;
+    }
+
+    p { margin: 12px 0; font-size: 15px; }
+
+    .highlight {
+      background: rgba(255,211,106,.12);
+      border-left: 3px solid #ffd36a;
+      padding: 12px;
+      margin: 16px 0;
+      border-radius: 6px;
+      color: #fff3c4;
       font-size: 14px;
-      color: #c7d2ff;
-      margin-bottom: 26px;
     }
 
-    .reward-box {
+    .reward {
+      margin: 18px 0;
+      padding: 14px;
       background: linear-gradient(145deg, #ffd36a, #ffb703);
       color: #2b1d00;
-      border-radius: 16px;
-      padding: 18px 14px;
-      margin-bottom: 26px;
-      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.4);
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: bold;
     }
 
-    .reward-box strong {
-      display: block;
-      font-size: 20px;
-      margin-bottom: 6px;
+    /* 底部固定按鈕 */
+    .bottom {
+      padding: 14px;
+      background: #0b1022;
+      box-shadow: 0 -4px 16px rgba(0,0,0,.6);
     }
 
     button {
       width: 100%;
-      padding: 16px 0;
-      font-size: 18px;
+      padding: 14px 0;
+      font-size: 16px;
       font-weight: bold;
       border: none;
-      border-radius: 50px;
+      border-radius: 8px;
+      background: #3b82f6;
+      color: #fff;
       cursor: pointer;
-      background: linear-gradient(135deg, #ffcc00, #ff8c00);
-      color: #2b1d00;
-      box-shadow: 0 10px 25px rgba(255,140,0,0.5);
-      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 20px rgba(59,130,246,.45);
+      transition: background .2s, transform .2s;
     }
 
-    button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(255,140,0,0.7);
+    button:active { background: #2563eb; transform: scale(.98); }
+
+    .footer { margin-top: 18px; font-size: 11px; color: #8b92c9; text-align: center; }
+
+    /* 驗證中遮罩 */
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(6,9,20,.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+      text-align: center;
     }
 
-    .note {
-      margin-top: 18px;
-      font-size: 12px;
-      color: #9aa4ff;
+    .overlay.show { display: flex; }
+
+    .loader {
+      width: 48px; height: 48px; border-radius: 50%;
+      border: 4px solid rgba(255,255,255,.2);
+      border-top-color: #3b82f6;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 14px;
     }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .verify { font-size: 15px; }
+    .verify small { display:block; margin-top:6px; color:#8b92c9; }
   </style>
 </head>
 <body>
-  <div class="card">
-    <div class="logo">ARENA OF VALOR</div>
-    <h1>周年慶限定回饋</h1>
-    <div class="subtitle">感謝挑戰者一路相伴</div>
-
-    <div class="reward-box">
-      <strong>🎁 免費周年禮包</strong>
-      登入即可領取限定獎勵
+  <div class="phone">
+    <div class="app-header">
+      <div class="back" onclick="fakeBack()">‹</div>
+      <div class="title">官方公告</div>
     </div>
 
-    <button onclick="claim()">立即領取</button>
+    <div class="content" id="content">
+      <div class="tag">帳號驗證公告</div>
+      <h1>周年慶帳號驗證作業</h1>
+      <div class="date">2025 / 12 / 15</div>
 
-    <div class="note">※ 每個帳號限領一次，數量有限</div>
+      <p>親愛的挑戰者您好：</p>
+      <p>為確保周年慶活動期間帳號安全，官方已啟動 <strong>帳號驗證機制</strong>。請完成以下驗證流程，以確保您可正常領取活動獎勵。</p>
+
+      <div class="highlight">
+        系統將進行帳號資格與資料一致性檢查，驗證過程可能需要數秒。
+      </div>
+
+      <div class="reward">
+        🔐 驗證完成後可領取：<br />
+        ・周年慶限定神秘禮包 × 1<br />
+        ・紀念造型體驗資格
+      </div>
+
+      <p>請注意，若驗證失敗或中斷，請重新嘗試或稍後再進行。</p>
+
+      <div class="footer">※ 官方保有活動最終解釋權</div>
+    </div>
+
+    <div class="bottom">
+      <button onclick="verify()">開始帳號驗證</button>
+    </div>
+
+    <!-- 驗證中遮罩 -->
+    <div class="overlay" id="overlay">
+      <div>
+        <div class="loader"></div>
+        <div class="verify">資料驗證中…<small>請勿關閉頁面</small></div>
+      </div>
+    </div>
   </div>
 
   <script>
-    function claim() {
-      setTimeout(() => {
-        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-      }, 800);
+    function fakeBack(){
+      const c = document.getElementById('content');
+      c.classList.add('slide-left');
+      setTimeout(()=>c.classList.remove('slide-left'), 300);
+    }
+
+    function verify(){
+      document.getElementById('overlay').classList.add('show');
+      setTimeout(()=>{
+        window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+      }, 1800);
     }
   </script>
 </body>
